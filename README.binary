@@ -1,0 +1,39 @@
+
+
+		NOTES ON RUNNING THE LINUX BINARY OF FLOWER
+
+	
+In the binary distribution, you should have the following files:
+
+
+	README.binary
+	README.building
+	README.html
+	README.license
+	README.txt
+	bin/flower
+	bin/flower.opt
+	bin/flower.tcl
+	bin/bitmaps/rum_class.xbm
+	samples/flower.fl
+	samples/test.fl
+
+To run the program, change to the bin directory, and run either "flower"
+or "flower.opt".  "flower" has assertions turned on, and "flower.opt" has
+them removed.  If you have any problems, before telling me about it please
+try to duplicate the behavior with flower.opt -- it will probably give a much
+more informative error message.
+
+For now, the current working directory must be "bin".  This is because the
+Tcl part of the program needs to find the bitmap in the "bitmaps" directory.
+I'm sure there's a simple way to specify a path to the Tcl interpreter, 
+but I haven't found it yet.
+
+In the samples directory are two small object diagrams.  You should be
+able to read these with "File -> Read" from within flower.
+
+Good luck!
+
+
+Bill Foote
+billf@jovial.com

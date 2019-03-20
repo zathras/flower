@@ -1,0 +1,11 @@
+
+
+     10/21/95:  Changed class structure _and_ _data_ _files_ to name the
+		logical model correctly.  Logical model items now start
+		with "lm-", and the logical model is called "logical-model".
+
+     10/21/95:	Made connections be constrained to their solids on project
+     		load.  This fixes up hand-edited files and font differences
+     		between different systems.
+
+Version 0.1 released 10/21/95			    

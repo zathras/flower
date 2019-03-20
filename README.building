@@ -1,0 +1,38 @@
+
+			BUILD NOTES FOR FLOWER
+
+
+
+Flower comes shipped as two directories:  "tcl" and "flower".  The tcl
+directory contains some "glue" to access Tcl/Tk from Eiffel, and some
+Eiffel classes to encapsulate part of the Tk library.
+
+The "tcl" subdirectory contains some C code, so to build it, do the
+following:
+
+	cd tcl
+	make
+
+To compile flower, cd into the flower directory and run ebuild.  Pick
+the Ace file "Ace.ace", and freeze.  You might have to change the path
+of the tcl and tk libraries in Ace.ace if your system is set up differently
+than mine.
+
+
+LINKING CONFLICT:
+
+    When you try to link flower against the tcl library, you will probably
+    get symbol conflicts for the symbol "panic".  It seems that both Tck/Tk
+    and Eiffel want their own version of a function by that name.
+
+    To get flower to compile, the easiest thing to do is probably to change
+    the name of "panic" to "Tcl_panic" throughout Tcl and Tk.  I did this
+    in a few minutes with grep.  I haven't packaged up a set of context
+    diffs for this (I don't really want to track Tcl/Tk library versions),
+    but it's easy:  just grep for "panic" and change it.
+
+    If there's a problem, just drop me a line and I'll make up the context
+    diffs.
+
+billf@jovial.com
+http://www.jovial.com/~billf/

@@ -1,0 +1,73 @@
+system
+	FLOWER
+	-- Replace SYSTEM_NAME by the name of the executable file
+	-- to be generated for your system.
+
+root
+
+	FLOWER_MAIN (flower): "make"
+	-- Replace ROOT_CLASS, ROOT_CLUSTER and creation_procedure
+	-- by the names of the root class, root class cluster and
+	-- root creation procedure for your system.
+	-- The `(ROOT_CLUSTER)' part may be omitted if there is
+	-- no other class of name ROOT_CLASS in the universe.
+
+default
+
+	-- assertion (all);
+	assertion (require);
+ 		-- If you turn on assertion checking for all, you
+		-- will have to modify ISE's library to work around
+		-- bugs (at least with ISE 3.3.6 under Linux).  Specifically,
+		-- ARRAYED_LIST>>wipe_out triggers the ARRAY>>consistent_size.
+		 
+
+	-- @@ precompiled ("$EIFFEL3/precomp/spec/$PLATFORM/base");
+
+
+cluster
+
+	flower: 	"."
+		default
+			assertion (all)
+		end;	-- flower
+
+	tcl:		"../tcl"
+		default
+			assertion (all);
+		visible
+    		TCL_INTERPRETER
+        		export 
+            		"command_callback"
+				end
+		end;  -- tcl
+    kernel:             "$EIFFEL3/library/base/kernel"
+		visible
+			STRING
+				export
+					"from_c"	
+				end;
+		end;
+
+        access:             "$EIFFEL3/library/base/structures/access";
+        cursors:            "$EIFFEL3/library/base/structures/cursors";
+        cursor_tree:        "$EIFFEL3/library/base/structures/cursor_tree";
+        dispenser:          "$EIFFEL3/library/base/structures/dispenser";
+        iteration:          "$EIFFEL3/library/base/structures/iteration";
+        list:               "$EIFFEL3/library/base/structures/list";
+        obsolete:           "$EIFFEL3/library/base/structures/obsolete";
+        set:                "$EIFFEL3/library/base/structures/set";
+        sort:               "$EIFFEL3/library/base/structures/sort";
+        storage:            "$EIFFEL3/library/base/structures/storage";
+        support:            "$EIFFEL3/library/base/support";
+        table:              "$EIFFEL3/library/base/structures/table";
+        traversing:         "$EIFFEL3/library/base/structures/traversing";
+        tree:               "$EIFFEL3/library/base/structures/tree";
+
+
+external
+
+		-- In the following, relative paths start from EIFGEN/?_code/.
+	Object:  "../../../tcl/libeiftcl.a /usr/local/lib/libtk.a /usr/local/lib/libtcl.a -L/usr/X11R6/lib -lX11"
+
+end
